@@ -1,2 +1,2 @@
 # Some-code-of-mine
-It's not all mine ( i think )
+I'm not sure if all of it is mine but if it isn't and i discover it i will say it
