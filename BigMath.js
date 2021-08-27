@@ -54,7 +54,7 @@ break
 return k 
 },
 log10n: function(x){
-    if(x<BigInf) return BigInt(Math.round(Math.log2(Number(x))))
+    if(x<BigInf) return BigInt(Math.round(Math.log10(Number(x))))
 let p = 0n
 while(10n**(2n**p)<x) p++
 let k = 2n**p
