@@ -10,7 +10,9 @@ BigMath = {
         return BigInt(Math.floor(Number(Big) * Num))
     },
     nIntDiv: function (x, y) {
-        if (typeof x === typeof y) return BigInt(x) / BigInt(y)
+
+        if (typeof x === "bigint" && typeof y === "bigint") return x / y
+        if (typeof x === "number" && typeof y === "number") return BigInt(Math.floor(x / y))
         if (typeof x === "bigint") {
             [Big, Num] = [x, y]
             if (BigMath.abs(Big) > BigInf) return Big / BigInt(Math.floor(Num))
@@ -73,7 +75,7 @@ BigMath = {
     },
     pow: function (x, y) {
         if (typeof x === "bigint" && typeof y === "bigint") return x ** y
-        if (Math.floor(Number(x) ** Number(y))< BigInf) return BigInt(Math.floor(Number(x) ** Number(y)))
+        if (Math.floor(Number(x) ** Number(y)) < BigInf) return BigInt(Math.floor(Number(x) ** Number(y)))
         let modulated = BigMath.log2n(x) % 1024n
         if (modulated === 0) return 2n ** BigInt(Math.floor(Number(modulated) * Number(y)))
         let Num = Number(x / (2n ** modulated))
