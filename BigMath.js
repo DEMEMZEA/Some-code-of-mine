@@ -12,7 +12,11 @@ BigMath = {
     nIntDiv: function (x, y) {
 
         if (typeof x === "bigint" && typeof y === "bigint") return x / y
-        if (typeof x === "number" && typeof y === "number") return BigInt(Math.floor(x / y))
+        if (typeof x === "number" && typeof y === "number"){
+        if(x/y<bigInf) return BigInt(Math.floor(x / y))
+        y = bigInt(Math.floor(1/y))
+        return bigInt(x)*y
+        } 
         if (typeof x === "bigint") {
             [Big, Num] = [x, y]
             if (BigMath.abs(Big) > BigInf) return Big / BigInt(Math.floor(Num))
