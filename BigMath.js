@@ -70,5 +70,15 @@ break
 }
 }
 return k
-} 
+},
+pow: function(x,y){
+if(typeof x==="bigint"&&typeof y==="bigint") return x**y
+if(BigInt(Math.floor(Number(x)**Number(y)))<BigInf) return BigInt(Math.floor(Number(x)**Number(y)))
+let modulated = BigInt.log2n(x)%1024n
+if(modulated===0) return 2n**BigInt(Math.floor(Number(modulated)*Number(y)))
+let Num = Number(x/(2n**modulated))
+let log = Math.log2(Num)
+let Big = 2n**BigInt(Math.floor(Number(modulated)*Number(y)))
+return Big*BigInt(Math.floor(2**(log*Number(y))))
+}
 }
