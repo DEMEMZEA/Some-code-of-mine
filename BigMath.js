@@ -50,10 +50,10 @@ BigMath = {
         for (i = p - 1n; i > -1n; i--) {
             mode = BigMath.sign(2n ** k - x)
             switch (mode) {
+                case -1n: k += 2n ** i
+                    break
                 case 0n: return k
                 case 1n: k -= 2n ** i
-                    break
-                case -1n: k += 2n ** i
                     break
             }
         }
@@ -68,10 +68,10 @@ BigMath = {
         for (i = p - 1n; i > -1n; i--) {
             mode = BigMath.sign(10n ** k - x)
             switch (mode) {
+                case -1n: k += 2n ** i
+                    break
                 case 0n: return k
                 case 1n: k -= 2n ** i
-                    break
-                case -1n: k += 2n ** i
                     break
             }
         }
@@ -96,10 +96,10 @@ BigMath = {
         for (i = p - 1n; i > -1n; i--) {
             mode = BigMath.sign(BigMath.pow(Base, k) - Big)
             switch (mode) {
+                case -1n: k += 2n ** i
+                    break
                 case 0n: return k
                 case 1n: k -= 2n ** i
-                    break
-                case -1n: k += 2n ** i
                     break
             }
         }
