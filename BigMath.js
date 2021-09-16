@@ -86,5 +86,23 @@ BigMath = {
         let log = Math.log2(Num)
         let Big = 2n ** BigInt(Math.floor(Number(modulated) * Number(y)))
         return Big * BigInt(Math.floor(2 ** (log * Number(y))))
+    },
+    logBase: function (Big, Base) {
+        if (Big < BigInf) return BigInt(Math.round(Math.log(Number(Big)) / Math.log(Number(Base))))
+        let p = 0n
+        while (BigMath.pow(Base, 2n ** p) < Big) p++
+        let k = 2n ** p
+        let mode = BigMath.sign(BigMath.pow(Base, k) - Big)
+        for (i = p - 1n; i > -1n; i--) {
+            mode = BigMath.sign(BigMath.pow(Base, k) - Big)
+            switch (mode) {
+                case 0n: return k
+                case 1n: k -= 2n ** i
+                    break
+                case -1n: k += 2n ** i
+                    break
+            }
+        }
+        return k
     }
 }
